@@ -7,18 +7,17 @@ export const css = {
 };
 
 export const social = {
-  email: 'nsakhilesh02@gmail.com',
-  linkedin: 'akhilesh-ns-889899195',
-  github: 'AkhileshNS',
-  stackoverflow: 'AkhileshNS',
-  stackoverflowId: '10635341',
+  email: 'https://google.com',
+  linkedin: 'https://linkedin.com',
+  github: 'https://github.com',
 };
 
 export const profile = {
-  name: 'Akhilesh NS',
-  position: 'Full Stack Web Developer and Mobile Developer',
-  image: '../assets/profile-pic.png',
-  location: 'Bangalore, India',
+  name: 'Username',
+  position: 'Position',
+  image:
+    'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
+  location: 'Location',
 };
 
 export const summary = [
@@ -41,117 +40,45 @@ lectus vitae dapibus. Curabitur suscipit diam eget nis.
 
 export const jobs = [
   {
-    title: 'PHP and Wordpress Developer',
-    company: 'Quicko',
-    location: 'Bangalore, India',
-    duration: 'Jan, 2020 - Aug, 2020',
+    title: 'Job Title',
+    company: 'Company',
+    location: 'Location',
+    duration: 'From - To',
     description: [
-      `Transitioned the company’s primary blog into two wordpress based websites for improved SEO and ease-of-use`,
-      `Worked on the Technical Design and Development of an additional wordpress based website for the company’s newsletter`,
-      `Setup each of the three websites with custom themes written in PHP, HTML, CSS, SASS, JavaScript and JQuery`,
-      `Created a custom comments system and navigation system for each of the websites and launched a Node server on Heroku to enable email subscriptions with SendGrid`,
-    ],
-  },
-  {
-    title: 'React Developer',
-    company: 'BMS College of Engineering',
-    location: 'Bangalore, India',
-    duration: 'Aug, 2018 - Sep, 2019',
-    description: [
-      `Worked on the Design and development of an ERP system using React and Firebase that automates the process of managing attendance, scheduling events, distributing marks etc and thus improved productivity by a huge margin`,
-      `Worked on the Design and development of a software using React which allows teachers to perform analysis on students’ marks and calculate statistics such as course attainment in a matter of a few minutes instead of hours`,
-      `Built a website using React for the E-Governance cell of BMSCE and hosted it on Netlify`,
-    ],
-  },
-  {
-    title: 'Java Android Developer',
-    company: 'BMS College of Engineering',
-    location: 'Bangalore, India',
-    duration: 'Apr, 2018 - Sep, 2018',
-    description: [
-      `Built two Java-based android applications for the college: One for presenting the college’s exam time table to parents and students and one for the college’s technical fest, PhaseShift 2018`,
-      `Coordinated both applications’ communication and interaction with the college’s MySQL server which was used as the Backend for the applications`,
-      `Created an animation using Adobe After Effects and programmed it into the application by creating a website using HTML, CSS, JavaScript and Lottie and then embedding the website using Android WebView`,
-    ],
-  },
-  {
-    title: 'Java Android Developer',
-    company: 'Applied Inventions India Pvt Ltd',
-    location: 'Bangalore, India',
-    duration: 'Jun, 2017 - Aug, 2017',
-    description: [
-      `Worked on creating a local SQLite Database for the company’s Java based android application and synchronizing the local database with it’s cloud based Oracle MySQL counterpart`,
-      `Added features such as PDF generation, Graphs and Statistics generation`,
-      `Programmed a majority of the User Interface for the application using XML and Java and was tasked with troubleshooting any and all bugs that arised throughout the life cycle of the application`,
+      `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas`,
+      `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas`,
+      `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas`,
     ],
   },
 ];
 
 export const projects = [
   {
-    title: 'Heroku Deploy',
-    description:
-      'A simple github action that dynamically deploys an app to heroku',
-    stars: 91,
-    forks: 23,
-    link: 'https://github.com/AkhileshNS/heroku-deploy',
-    stats: [
-      {
-        name: 'JavaScript',
-        percentage: 86.8,
-      },
-      {
-        name: 'Python',
-        percentage: 10.8,
-      },
-      {
-        name: 'Dockerfile',
-        percentage: 2.1,
-      },
-      {
-        name: 'Other',
-        percentage: 0.3,
-      },
-    ],
+    title: 'Project Title',
+    description: 'Project Description',
+    stars: 0,
+    forks: 0,
+    link: 'https://github.com',
+    stats: [],
   },
 ];
 
 export const stats = [
   {
     name: 'JavaScript',
-    percentage: 42.9,
+    percentage: 50,
   },
   {
     name: 'Go',
-    percentage: 3.6,
+    percentage: 25,
   },
   {
     name: 'Python',
-    percentage: 3.6,
+    percentage: 12.5,
   },
   {
     name: 'TypeScript',
-    percentage: 14.3,
-  },
-  {
-    name: 'Dockerfile',
-    percentage: 10.7,
-  },
-  {
-    name: 'HTML',
-    percentage: 10.7,
-  },
-  {
-    name: 'PHP',
-    percentage: 7.1,
-  },
-  {
-    name: 'Java',
-    percentage: 3.6,
-  },
-  {
-    name: 'C#',
-    percentage: 3.6,
+    percentage: 12.5,
   },
 ];
 

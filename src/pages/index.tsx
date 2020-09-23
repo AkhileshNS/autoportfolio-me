@@ -3,11 +3,11 @@ import Portfolio from './Portfolio/Portfolio';
 
 export default [
   {
-    path: '/',
-    component: Home,
-  },
-  {
     path: '/:name',
     component: Portfolio,
+  },
+  {
+    path: '/',
+    component: Home,
   },
 ];

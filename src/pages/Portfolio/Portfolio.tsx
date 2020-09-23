@@ -16,9 +16,11 @@ import Experience from 'components/Experience';
 import Projects from 'components/Projects';
 import { ScrollingProvider, Section } from 'react-scroll-section';
 import firebase from 'global/firebase';
+import { useParams } from 'react-router';
 
 const Portfolio: React.FC = () => {
-  const name = 'AkhileshNS'.toLowerCase();
+  const params: any = useParams();
+  const name = (params.name || 'dummy').toLowerCase();
   const [user, setUser] = React.useState({
     version: 0,
     profile,
@@ -41,11 +43,11 @@ const Portfolio: React.FC = () => {
           .database()
           .ref(`users/_${name}/version`)
           .once('value');
-        const db_version = versionSnap.val();
 
         if (
-          cached_user &&
-          JSON.parse(cached_user).version === parseInt(db_version)
+          !cached_user ||
+          !versionSnap.exists() ||
+          JSON.parse(cached_user).version === parseInt(versionSnap.val())
         ) {
           return;
         }
