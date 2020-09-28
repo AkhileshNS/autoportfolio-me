@@ -20,7 +20,7 @@ import { useParams } from 'react-router';
 
 const Portfolio: React.FC = () => {
   const params: any = useParams();
-  const name = (params.name || 'dummy').toLowerCase();
+  const name = (params.name || 'AkhileshNS').toLowerCase();
   const [user, setUser] = React.useState({
     version: 0,
     profile,
