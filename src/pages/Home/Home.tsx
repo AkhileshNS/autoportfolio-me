@@ -1,33 +1,29 @@
 import React from 'react';
-import { Store } from 'App/App.store';
-import { Container } from './Home.styles';
+import Container from './Home.styles';
 
-interface IProps {
-  counter: number;
-  increment: () => void;
-  decrement: () => void;
-}
+const Home: React.FC = (props) => {
+  const [github, setGithub] = React.useState('');
 
-const Home: React.FC<IProps> = (props) => {
   return (
     <Container>
-      <p>Learn React</p>
-      <button onClick={props.increment}>increment</button>
-      <br />
-      <p>{props.counter}</p>
-      <button onClick={props.decrement}>decrement</button>
+      <div className='container'>
+        <h1>Claim your free portfolio</h1>
+        <h3>Created using data from your linkedin and github</h3>
+        <p>
+          To get started, just enter your GitHub username and sign into your
+          linkedin account
+        </p>
+        <div className='mini-form'>
+          <input
+            type='text'
+            placeholder='Github Username'
+            value={github}
+            onChange={(e) => setGithub(e.target.value)}
+          />
+        </div>
+      </div>
     </Container>
   );
 };
 
-export default () => {
-  const store = Store.useContainer();
-
-  return (
-    <Home
-      counter={store.counter}
-      increment={store.increment}
-      decrement={store.decrement}
-    />
-  );
-};
+export default Home;
