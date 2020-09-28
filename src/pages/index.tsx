@@ -8,6 +8,6 @@ export default [
   },
   {
     path: '/',
-    component: Portfolio,
+    component: Home,
   },
 ];

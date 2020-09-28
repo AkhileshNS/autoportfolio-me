@@ -20,7 +20,7 @@ import { useParams } from 'react-router';
 
 const Portfolio: React.FC = () => {
   const params: any = useParams();
-  const name = (params.name || 'AkhileshNS').toLowerCase();
+  const name = (params.name || 'dummy').toLowerCase();
   const [user, setUser] = React.useState({
     version: 0,
     profile,
@@ -44,10 +44,13 @@ const Portfolio: React.FC = () => {
           .ref(`users/_${name}/version`)
           .once('value');
 
+        if (!versionSnap.exists()) {
+          return;
+        }
+
         if (
-          !cached_user ||
-          !versionSnap.exists() ||
-          JSON.parse(cached_user).version === parseInt(versionSnap.val())
+          cached_user &&
+          JSON.parse(cached_user).version === versionSnap.val()
         ) {
           return;
         }
@@ -65,7 +68,7 @@ const Portfolio: React.FC = () => {
     };
 
     getData();
-  }, []);
+  }, [name]);
 
   return (
     <ScrollingProvider>
