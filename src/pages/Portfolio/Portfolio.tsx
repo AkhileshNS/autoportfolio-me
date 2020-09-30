@@ -3,6 +3,7 @@ import Container from './Portfolio.styles';
 import {
   summary,
   profile,
+  info,
   stats,
   jobs,
   projects,
@@ -25,6 +26,7 @@ const Portfolio: React.FC = () => {
     version: 0,
     profile,
     summary,
+    info,
     stats,
     jobs,
     projects,
@@ -80,7 +82,7 @@ const Portfolio: React.FC = () => {
           <About summary={user.summary} />
         </Section>
         <Section id='skills'>
-          <Skills stats={user.stats} />
+          <Skills stats={user.stats} info={user.info} />
         </Section>
         <Section id='experience'>
           <Experience jobs={user.jobs} />

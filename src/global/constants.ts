@@ -20,6 +20,13 @@ export const profile = {
   location: 'Location',
 };
 
+export const info = {
+  issues: 0,
+  commits: 0,
+  pullRequests: 0,
+  pullRequestReviews: 0,
+};
+
 export const summary = [
   `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet
