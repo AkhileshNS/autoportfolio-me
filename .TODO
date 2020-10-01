@@ -8,10 +8,6 @@
 
 - [x] Connect Dexie and Firebase to the site and make the route dynamic
 
-- [ ] Setup index page to allow people to create their own portfolios based on their github and linkedin profiles
+- [ ] Switch from Firebase Functions to Heroku (for better long term availability)
 
-  - [ ] Figuring what requests need to be made to get Linkedin data
-
-  - [ ] Setup the react linkedin login component 
-
-  - [ ] Setup a server to make the requests and set the data in firebase 
+- [ ] Create an index page with GitHub Firebase Auth and Linkedindata to get started

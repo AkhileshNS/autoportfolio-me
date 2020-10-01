@@ -1,8 +1,6 @@
 import scrapedin from 'scrapedin';
 import { IGitHub, ILinkedIn, IRepoLanguages } from './types';
 import { GraphQLClient, gql } from 'graphql-request';
-import { Headers } from 'cross-fetch';
-global.Headers = global.Headers || Headers;
 
 export const getLinkedInData = async (
   email: string,

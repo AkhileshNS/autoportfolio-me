@@ -1,20 +1,36 @@
-import * as functions from 'firebase-functions';
-import * as admin from 'firebase-admin';
+// IMPORTS
+import express from 'express';
+import compression from 'compression';
+import helmet from 'helmet';
+import bodyParser from 'body-parser';
+import { ISocial } from './types';
 import {
-  addLinkedInData,
   createUser,
   addGitHubData,
+  addLinkedInData,
   addLangStats,
 } from './functions';
 import { getAllRepos, getGitHubData, getLinkedInData } from './network-calls';
-import { ISocial } from './types';
-admin.initializeApp();
+import * as admin from 'firebase-admin';
+admin.initializeApp({
+  credential: admin.credential.cert(
+    require('../' +
+      (process.env.DEVELOPMENT ? 'temp-service-key.json' : 'service-key.json'))
+  ),
+  databaseURL: 'https://autoportfolio-me.firebaseio.com',
+});
 
-// Start writing Firebase Functions
-// https://firebase.google.com/docs/functions/typescript
+// VARIABLES
+const app = express();
+const port = process.env.PORT || 8080;
 
-export const generate = functions.https.onRequest(async (request, response) => {
-  // functions.logger.info("Hello logs!", {structuredData: true});
+// MIDDLEWARE
+app.use(compression());
+app.use(helmet());
+app.use(bodyParser.json());
+
+// ROUTES
+app.post('/', async (request, response) => {
   try {
     // Request Body
     const version: number = request.body.version || null;
@@ -30,14 +46,18 @@ export const generate = functions.https.onRequest(async (request, response) => {
       !githubUsername ||
       !githubToken
     ) {
-      throw 'Missing one of the following dependencies:\n{version, linkedinUrl, githubUsername, githubToken, social}';
+      throw new Error(
+        'Missing one of the following dependencies:\n{version, linkedinUrl, githubUsername, githubToken, social}'
+      );
     }
 
     let user = createUser(version + 1, social);
-    let email = functions.config().generate.email || null;
-    let password = functions.config().generate.password || null;
+    let email = process.env.EMAIL || null;
+    let password = process.env.PASSWORD || null;
     if (!email || !password) {
-      throw 'Internal Error: We regret the inconvenience but please try again later';
+      throw new Error(
+        'Internal Error: We regret the inconvenience but please try again later'
+      );
     }
 
     user = addLinkedInData(
@@ -61,3 +81,6 @@ export const generate = functions.https.onRequest(async (request, response) => {
     response.send({ err });
   }
 });
+
+// BINDING
+app.listen(port, () => console.log(`Example app listening on port ${port}`));
