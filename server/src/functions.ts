@@ -88,7 +88,8 @@ export const addGitHubData = (_user: IUser, github: IGitHub): IUser => {
               ) / 10,
           };
         })
-        .sort((a, b) => b.percentage - a.percentage),
+        .sort((a, b) => b.percentage - a.percentage)
+        .filter((a) => a.percentage),
     };
   });
 
@@ -118,7 +119,9 @@ export const addLangStats = (_user: IUser, languages: IRepoLanguages[]) => {
     });
   }
 
-  user.stats.sort((a, b) => b.percentage - a.percentage);
+  user.stats
+    .sort((a, b) => b.percentage - a.percentage)
+    .filter((a) => a.percentage);
 
   return user;
 };

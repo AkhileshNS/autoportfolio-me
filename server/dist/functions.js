@@ -77,7 +77,8 @@ exports.addGitHubData = (_user, github) => {
                     percentage: Math.round((language.size / repo.languages.totalSize) * 100 * 10) / 10,
                 };
             })
-                .sort((a, b) => b.percentage - a.percentage),
+                .sort((a, b) => b.percentage - a.percentage)
+                .filter((a) => a.percentage),
         };
     });
     return user;
@@ -99,7 +100,9 @@ exports.addLangStats = (_user, languages) => {
             percentage: Math.round((langs[lang] / totalSize) * 1000) / 10,
         });
     }
-    user.stats.sort((a, b) => b.percentage - a.percentage);
+    user.stats
+        .sort((a, b) => b.percentage - a.percentage)
+        .filter((a) => a.percentage);
     return user;
 };
 //# sourceMappingURL=functions.js.map
