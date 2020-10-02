@@ -4,4 +4,10 @@ export const convertToStatements = (str: string | null) =>
         .split('\n')
         .map((item: string) => item.trim())
         .filter((item: string) => Boolean(item))
+        .map((item) => {
+          if (item[0] === '-') {
+            return item.slice(2);
+          }
+          return item;
+        })
     : [];
