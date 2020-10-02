@@ -40,11 +40,11 @@ app.post('/', async (request, response) => {
     const githubToken: string = request.body.githubToken || null;
 
     if (
-      !version ||
-      !social ||
-      !linkedinUrl ||
-      !githubUsername ||
-      !githubToken
+      version === null ||
+      social === null ||
+      linkedinUrl === null ||
+      githubUsername === null ||
+      githubToken === null
     ) {
       throw new Error(
         'Missing one of the following dependencies:\n{version, linkedinUrl, githubUsername, githubToken, social}'

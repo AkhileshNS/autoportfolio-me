@@ -48,11 +48,11 @@ app.post('/', (request, response) => __awaiter(void 0, void 0, void 0, function*
         const linkedinUrl = request.body.linkedinUrl || null;
         const githubUsername = request.body.githubUsername || null;
         const githubToken = request.body.githubToken || null;
-        if (!version ||
-            !social ||
-            !linkedinUrl ||
-            !githubUsername ||
-            !githubToken) {
+        if (version === null ||
+            social === null ||
+            linkedinUrl === null ||
+            githubUsername === null ||
+            githubToken === null) {
             throw new Error('Missing one of the following dependencies:\n{version, linkedinUrl, githubUsername, githubToken, social}');
         }
         let user = functions_1.createUser(version + 1, social);

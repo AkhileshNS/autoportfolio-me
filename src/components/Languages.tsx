@@ -15,13 +15,12 @@ interface IProps {
 }
 
 const Languages: React.FC<IProps> = (props) => {
-  const [index, setIndex] = React.useState(props.stats.length > 0 ? 0 : -1);
-
   const stats = props.stats.map(({ name, percentage }) => ({
     name,
     percentage,
     color: name in colors ? colors[name] : 'black',
   }));
+  const [index, setIndex] = React.useState(0);
 
   return (
     <Container card={props.card}>
@@ -45,7 +44,7 @@ const Languages: React.FC<IProps> = (props) => {
               </p>
             </div>
           ))}
-        {props.card && index !== -1 && (
+        {props.card && index < stats.length && (
           <div className='detail'>
             <div
               className='box'
