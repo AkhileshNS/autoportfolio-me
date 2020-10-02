@@ -33,7 +33,8 @@ app.use(bodyParser.json());
 app.post('/', async (request, response) => {
   try {
     // Request Body
-    const version: number = request.body.version || null;
+    const version: number =
+      request.body.version !== undefined ? request.body.version : null;
     const social: ISocial = request.body.social || null;
     const linkedinUrl: string = request.body.linkedinUrl || null;
     const githubUsername: string = request.body.githubUsername || null;

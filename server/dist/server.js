@@ -43,7 +43,7 @@ app.use(body_parser_1.default.json());
 app.post('/', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Request Body
-        const version = request.body.version || null;
+        const version = request.body.version !== undefined ? request.body.version : null;
         const social = request.body.social || null;
         const linkedinUrl = request.body.linkedinUrl || null;
         const githubUsername = request.body.githubUsername || null;
