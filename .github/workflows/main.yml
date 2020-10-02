@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'autoportfolio' #Must be unique in Heroku
+          heroku_email: 'nsakhilesh@izalus.com'
+          buildpack: 'https://github.com/jontewks/puppeteer-heroku-buildpack.git'
+          appdir: 'server'
+        env:
+          HD_FIREBASE_PROJECT_NAME: ${{secrets.FIREBASE_PROJECT_NAME}}
+          HD_FIREBASE_PRIVATE_KEY_ID: ${{secrets.FIREBASE_PRIVATE_KEY_ID}}
+          HD_FIREBASE_PRIVATE_KEY: ${{secrets.FIREBASE_PRIVATE_KEY}}
+          HD_FIREBASE_CLIENT_ID: ${{secrets.FIREBASE_CLIENT_ID}}
+          HD_EMAIL: nsakhilesh@izalus.com
+          HD_PASSWORD: ${{secrets.PASSWORD}}
