@@ -19,7 +19,7 @@ export const createUser = (version: number, social: ISocial): IUser => ({
   stats: [],
   jobs: [],
   projects: [],
-  social: social,
+  social,
 });
 
 export const addLinkedInData = (_user: IUser, profile: ILinkedIn): IUser => {
@@ -82,7 +82,8 @@ export const addGitHubData = (_user: IUser, github: IGitHub): IUser => {
         return {
           name: language.node.name,
           percentage:
-            Math.round((language.size / repo.totalSize) * 100 * 10) / 10,
+            Math.round((language.size / repo.languages.totalSize) * 100 * 10) /
+            10,
         };
       }),
     };
@@ -100,16 +101,17 @@ export const addLangStats = (_user: IUser, languages: IRepoLanguages[]) => {
   const langs: ILangs = {};
   let totalSize = 0;
   languages.forEach((repoLangs) => {
-    repoLangs.languages.nodes.forEach(({ name }) => {
-      langs[name] = (langs[name] || 0) + 1;
-      totalSize++;
+    repoLangs.languages.edges.forEach(({ node, size }) => {
+      langs[node.name] =
+        (langs[node.name] || 0) + (size / repoLangs.languages.totalSize) * 100;
     });
+    totalSize += 100;
   });
 
   for (let lang in langs) {
     user.stats.push({
       name: lang,
-      percentage: Math.round((langs[lang] / totalSize) * 100 * 10) / 10,
+      percentage: Math.round((langs[lang] / totalSize) * 1000) / 10,
     });
   }
 

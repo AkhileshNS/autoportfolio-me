@@ -10,7 +10,7 @@ fs.writeFileSync(
     type: `service_account`,
     project_id: process.env.FIREBASE_PROJECT_NAME,
     private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
-    private_key: process.env.FIREBASE_PRIVATE_KEY,
+    private_key: process.env.FIREBASE_PRIVATE_KEY.split('\\n').join('\n'),
     client_email: `firebase-adminsdk-uujfg@${process.env.FIREBASE_PROJECT_NAME}.iam.gserviceaccount.com`,
     client_id: process.env.FIREBASE_CLIENT_ID,
     auth_uri: `https://accounts.google.com/o/oauth2/auth`,

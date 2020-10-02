@@ -1,6 +1,8 @@
 import scrapedin from 'scrapedin';
 import { IGitHub, ILinkedIn, IRepoLanguages } from './types';
 import { GraphQLClient, gql } from 'graphql-request';
+import { Headers } from 'cross-fetch';
+global.Headers = global.Headers || Headers;
 
 export const getLinkedInData = async (
   email: string,
@@ -93,10 +95,13 @@ export const getAllRepos = async (
       user(login: "${username}") {
         repositories(first: ${repoCount}) {
           nodes {
-            isFork
             languages(first: 100) {
-              nodes {
-                name
+              totalSize
+              edges {
+                node {
+                  name
+                }
+                size
               }
             }
           }
@@ -107,6 +112,6 @@ export const getAllRepos = async (
 
   const data = await client.request(query);
   return data.user.repositories.nodes.filter(
-    (node: IRepoLanguages) => node.languages.nodes.length > 0
+    (node: IRepoLanguages) => node.languages.edges.length > 0
   );
 };

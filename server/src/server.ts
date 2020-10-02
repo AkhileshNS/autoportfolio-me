@@ -74,10 +74,11 @@ app.post('/', async (request, response) => {
 
     await admin
       .database()
-      .ref('users/_' + githubUsername)
+      .ref('users/_' + githubUsername.toLowerCase())
       .set(user);
     response.send('SUCCESS');
   } catch (err) {
+    console.log(err);
     response.send({ err });
   }
 });

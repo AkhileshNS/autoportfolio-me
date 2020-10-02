@@ -3,6 +3,7 @@ import { css } from 'global/constants';
 
 export default styled.div`
   padding-top: 36px;
+  width: 100%;
 
   h3,
   p {

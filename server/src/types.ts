@@ -96,16 +96,12 @@ export interface IEdge {
 }
 
 export interface ILanguages {
-  totalSize?: number;
+  totalSize: number;
   edges: IEdge[];
 }
 
-export interface IRepoLanguage {
-  nodes: INode[];
-}
-
 export interface IRepoLanguages {
-  languages: IRepoLanguage;
+  languages: ILanguages;
 }
 
 export interface IRepo {
@@ -114,7 +110,6 @@ export interface IRepo {
   stargazerCount: number;
   forkCount: number;
   url: string;
-  totalSize: number;
   languages: ILanguages;
 }
 

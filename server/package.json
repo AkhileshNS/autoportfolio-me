@@ -4,12 +4,13 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "prestart": "tsc",
+    "prestart": "npm run generate && tsc",
     "start": "npm run serve",
     "serve": "node -r dotenv/config dist/server.js",
     "watch": "run-p watch-*",
     "watch-node": "nodemon -r dotenv/config dist/server.js",
     "watch-ts": "tsc -w",
+    "prewatch": "npm run generate",
     "generate": "node -r dotenv/config scripts/generate.js"
   },
   "keywords": [],
