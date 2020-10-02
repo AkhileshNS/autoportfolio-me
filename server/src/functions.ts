@@ -78,14 +78,17 @@ export const addGitHubData = (_user: IUser, github: IGitHub): IUser => {
       stars: repo.stargazerCount,
       forks: repo.forkCount,
       link: repo.url,
-      stats: repo.languages.edges.map((language) => {
-        return {
-          name: language.node.name,
-          percentage:
-            Math.round((language.size / repo.languages.totalSize) * 100 * 10) /
-            10,
-        };
-      }),
+      stats: repo.languages.edges
+        .map((language) => {
+          return {
+            name: language.node.name,
+            percentage:
+              Math.round(
+                (language.size / repo.languages.totalSize) * 100 * 10
+              ) / 10,
+          };
+        })
+        .sort((a, b) => b.percentage - a.percentage),
     };
   });
 
@@ -114,6 +117,8 @@ export const addLangStats = (_user: IUser, languages: IRepoLanguages[]) => {
       percentage: Math.round((langs[lang] / totalSize) * 1000) / 10,
     });
   }
+
+  user.stats.sort((a, b) => b.percentage - a.percentage);
 
   return user;
 };
