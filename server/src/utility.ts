@@ -7,7 +7,7 @@ export const convertToStatements = (str: string | null) =>
           (item: string) => Boolean(item) && item.toLowerCase() !== 'see less'
         )
         .map((item) => {
-          if (!/[a-z]/i.test(item[0])) {
+          if (item.startsWith('- ')) {
             return item.slice(2);
           }
           return item;
