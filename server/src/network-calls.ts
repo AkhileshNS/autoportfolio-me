@@ -9,7 +9,11 @@ export const getLinkedInData = async (
   password: string,
   link: string
 ): Promise<ILinkedIn> => {
-  const profileScraper = await scrapedin({ email, password });
+  const profileScraper = await scrapedin({
+    email,
+    password,
+    puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
   // aniruddha-m-n-4715b3153 [OR] akhilesh-ns-889899195
   const profile = await profileScraper(link);
   return profile;

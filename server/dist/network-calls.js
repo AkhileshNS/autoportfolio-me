@@ -17,7 +17,11 @@ const graphql_request_1 = require("graphql-request");
 const cross_fetch_1 = require("cross-fetch");
 global.Headers = global.Headers || cross_fetch_1.Headers;
 exports.getLinkedInData = (email, password, link) => __awaiter(void 0, void 0, void 0, function* () {
-    const profileScraper = yield scrapedin_1.default({ email, password });
+    const profileScraper = yield scrapedin_1.default({
+        email,
+        password,
+        puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
     // aniruddha-m-n-4715b3153 [OR] akhilesh-ns-889899195
     const profile = yield profileScraper(link);
     return profile;
