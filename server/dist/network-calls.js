@@ -20,6 +20,7 @@ exports.getLinkedInData = (email, password, link) => __awaiter(void 0, void 0, v
     const profileScraper = yield scrapedin_1.default({
         email,
         password,
+        isHeadless: true,
         puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     // aniruddha-m-n-4715b3153 [OR] akhilesh-ns-889899195

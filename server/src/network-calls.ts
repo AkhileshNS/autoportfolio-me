@@ -12,6 +12,7 @@ export const getLinkedInData = async (
   const profileScraper = await scrapedin({
     email,
     password,
+    isHeadless: true,
     puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   // aniruddha-m-n-4715b3153 [OR] akhilesh-ns-889899195
