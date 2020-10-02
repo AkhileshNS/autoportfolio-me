@@ -15,5 +15,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: 'autoportfolio' #Must be unique in Heroku
           heroku_email: 'nsakhilesh@izalus.com'
-          buildpack: 'https://github.com/jontewks/puppeteer-heroku-buildpack.git'
+          usedocker: true
           appdir: 'server'

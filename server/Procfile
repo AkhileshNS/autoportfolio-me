@@ -1,1 +1,0 @@
-web: npm run generate && npm run serve
