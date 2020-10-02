@@ -18,6 +18,7 @@ import Projects from 'components/Projects';
 import { ScrollingProvider, Section } from 'react-scroll-section';
 import firebase from 'global/firebase';
 import { useParams } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const Portfolio: React.FC = () => {
   const params: any = useParams();
@@ -75,6 +76,17 @@ const Portfolio: React.FC = () => {
   return (
     <ScrollingProvider>
       <Container>
+        <Helmet>
+          <link
+            rel='icon'
+            href={user.profile.image || '%PUBLIC_URL%/favicon.ico'}
+          />
+          <meta
+            name='description'
+            content={user.summary.join('') || 'Portfolio'}
+          />
+          <title>{user.profile.name || 'Portfolio'}</title>
+        </Helmet>
         <Section id='profile'>
           <Profile {...user.profile} />
         </Section>
