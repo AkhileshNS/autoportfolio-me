@@ -1,4 +1,4 @@
-import Home from './Home/Home';
+// import Home from './Home/Home';
 import Portfolio from './Portfolio/Portfolio';
 
 export default [
@@ -8,6 +8,6 @@ export default [
   },
   {
     path: '/',
-    component: Home,
+    component: Portfolio,
   },
 ];

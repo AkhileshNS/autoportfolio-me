@@ -22,7 +22,7 @@ import { Helmet } from 'react-helmet';
 
 const Portfolio: React.FC = () => {
   const params: any = useParams();
-  const name = (params.name || 'dummy').toLowerCase();
+  const name = (params.name || 'akhileshns').toLowerCase();
   const [user, setUser] = React.useState({
     version: 0,
     profile,
